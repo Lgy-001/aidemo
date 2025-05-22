@@ -6,7 +6,7 @@ const Icon=(props:IconType)=>{
     const [isMove,setIsMove]=useState(false)
     return(
         <div className={classNames(['w-[160px] h-[148px] flex flex-col justify-center items-center  rounded-[15px]'],{
-            'bg-[#F2F3F8]':isMove ,
+            'bg-[#F2F3F8]':true ,
         })}
         onMouseMove={()=>{
             setIsMove(true)
