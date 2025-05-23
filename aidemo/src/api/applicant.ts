@@ -1,8 +1,8 @@
-import axios from "axios";
+// import axios from "axios";
 
-const applicant = axios.create({
-  baseURL: "http://localhost:3000",
-  headers: { "Content-Type": "application/json" },
-});
+// const applicant = await fetch({
+//   baseURL: "http://localhost:3000",
+//   headers: { "Content-Type": "application/json" },
+// });
 
-export default applicant;
+// export default applicant;
