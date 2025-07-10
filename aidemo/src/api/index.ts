@@ -21,7 +21,7 @@ export const sendMessageStream = async (message: string, onChunk: (chunk: string
     for (const line of lines) {
       if (line.startsWith('data: ')) {
         const content = line.replace('data: ', '');
-        if (content === '[DONE]') return;
+        if (content === '[DONE]') return false;
         onChunk(content);
       }
     }

@@ -1,0 +1,32 @@
+/* ai-thinking.less 机器人思考波纹 */
+
+@primary: #84858a;      // 主题颜色，可按需求替换
+@duration: 1.2s;        // 动画时长
+
+.ai-thinking {
+  display: inline-flex;          // 横向排列 3 个波纹
+  align-items: center;
+  gap: 4px;                      // 波纹间距
+  height: 50px;                  // 统一高度，便于对齐文本
+}
+
+/* 公共波纹样式 */
+.wave {
+  display: block;
+  width: 30px;                    // 初始宽度
+  height: 30px;                   // 初始高度
+  border-radius: 15px;            // 圆角 -> 椭圆形
+  background: @primary;          // 使用主题色
+  transform-origin: center;      // 以中心缩放
+  animation: pulse @duration ease-in-out infinite;
+}
+
+/* 通过 nth-child 或额外类名设置延迟，实现依次跳动 */
+.wave-2 { animation-delay: @duration * 0.2; } // 第二条延迟 20%
+.wave-3 { animation-delay: @duration * 0.4; } // 第三条延迟 40%
+
+/* 关键帧：从原点往两侧 X 方向伸缩 */
+@keyframes pulse {
+  0%, 100% { transform: scaleX(0.8); opacity: .6; } // 起止点：1 倍宽度
+  50%       { transform: scaleX(1); opacity: 1; } // 中点：变 3 倍更亮
+}

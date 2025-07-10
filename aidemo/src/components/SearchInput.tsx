@@ -6,7 +6,7 @@ const SearchInput = () => {
   const [userMessage, setUserMessage] = useState("");
   const addMessage = useMessageStore((state) => state.addMessage);
   const appendLastAiMessage = useMessageStore((state) => state.appendLastAiMessage);
-
+  const setLoading = useMessageStore((state) => state.setLoading);
   const handleSend = async () => {
     if (!userMessage.trim()) return;
 
@@ -15,14 +15,15 @@ const SearchInput = () => {
 
     // 清空输入框
     setUserMessage("");
-
+    setLoading(true);
     // 添加一个空的 ai 消息占位
     addMessage({ role: "ai", message: "" });
 
     // 处理流式 AI 回复
-    await sendMessageStream(userMessage, (chunk) => {
+   const done= await sendMessageStream(userMessage, (chunk) => {
       appendLastAiMessage(chunk);
     });
+    setLoading(done as boolean);
   };
 
   return (

@@ -1,5 +1,6 @@
 import Icon from "../../components/Icon"
 const LeftSider=()=>{
+
   return(
     <div className="  w-[200px] h-full  px-[10px] py-[12px] rounded shadow-xl border-[#E9EBF2] border-[2px]">
       <div className="flex flex-col justify-center items-center ">

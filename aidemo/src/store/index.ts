@@ -7,9 +7,11 @@ interface Message {
 
 interface MessageState {
   messages: Message[];
+  loading:boolean;
   addMessage: (msg: Message) => void;
   appendLastAiMessage: (chunk: string) => void;
   setMessage:(msg:Message[])=>void;
+  setLoading:(loading:boolean)=>void;
 }
 
 export const useMessageStore = create<MessageState>((set) => ({
@@ -26,5 +28,7 @@ export const useMessageStore = create<MessageState>((set) => ({
       ];
       return { messages: updated };
     }),
-    setMessage:(msg)=>set(()=>({messages:msg}))
+    setMessage:(msg)=>set(()=>({messages:msg})),
+    loading:false,
+    setLoading:(loading)=>set(()=>({loading}))
 }));
