@@ -3,7 +3,7 @@ import type { IconType } from "../types"
 import { useState } from "react"
 
 const Icon=(props:IconType)=>{
-    const [isMove,setIsMove]=useState(false)
+         const [isMove,setIsMove]=useState(false)
     return(
         <div className={classNames(['w-[160px] h-[148px] flex flex-col justify-center items-center  rounded-[15px]'],{
             'bg-[#F2F3F8]':true ,

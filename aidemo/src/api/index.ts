@@ -5,6 +5,8 @@ export const sendMessageStream = async (message: string, onChunk: (chunk: string
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ data: message }),
     onmessage: (event) => {
+      console.log(event.id);
+      
       const content = event.data;
       if (content === '[DONE]') return false;
       onChunk(content);
@@ -25,7 +27,7 @@ export const sendMessageStream = async (message: string, onChunk: (chunk: string
 //     buffer = lines.pop() || '';
 //     for (const line of lines) {
 //       if (line.startsWith('data: ')) {
-//         const content = line.replace('data: ', '');
+//         const content = line.replace('data: ', ''); 
 //         if (content === '[DONE]') return false;
 //         onChunk(content);
 //       }
